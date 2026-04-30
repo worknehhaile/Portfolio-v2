@@ -31,13 +31,16 @@ export default function Contact() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "${process.env.NEXT_PUBLIC_API_URL}/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
         },
-        body: JSON.stringify(form),
-      });
+      );
 
       const data = await response.json();
 
@@ -75,7 +78,6 @@ export default function Contact() {
       viewport={{ once: true }}
     >
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center w-full">
-
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
@@ -88,12 +90,12 @@ export default function Contact() {
           </p>
 
           <h2 className="text-5xl font-bold leading-tight mb-6">
-            Let's Build Something Together
+            Let Us Build Something Together
           </h2>
 
           <p className="text-gray-400 leading-relaxed">
-            Whether you have a project idea, collaboration opportunity,
-            or simply want to connect, feel free to send a message.
+            Whether you have a project idea, collaboration opportunity, or
+            simply want to connect, feel free to send a message.
           </p>
 
           <div className="mt-8 space-y-4 text-gray-300">
