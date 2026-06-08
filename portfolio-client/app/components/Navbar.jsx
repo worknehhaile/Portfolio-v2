@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { FaBars, FaTimes } from "react-icons/fa";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
@@ -47,36 +47,36 @@ export default function Navbar() {
           className="md:hidden text-2xl"
           onClick={() => setOpen(!open)}
         >
-          {open ? "✕" : "☰"}
+          {open ? <FaTimes /> : <FaBars />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10"
-          >
-            <ul className="flex flex-col items-center gap-6 py-8 text-sm">
-              {navLinks.map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link}`}
-                    onClick={() => setOpen(false)}
-                    className="capitalize text-gray-300 hover:text-white transition"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+     <AnimatePresence>
+  {open && (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.25 }}
+      className="md:hidden fixed top-[72px] left-0 w-full bg-black/95 backdrop-blur-xl border-t border-white/10 z-[999]"
+    >
+      <ul className="flex flex-col items-center gap-6 py-8 text-base">
+        {navLinks.map((link) => (
+          <li key={link}>
+            <a
+              href={`#${link}`}
+              onClick={() => setOpen(false)}
+              className="capitalize text-gray-300 hover:text-white transition"
+            >
+              {link}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
+  )}
+</AnimatePresence>
     </nav>
   );
 }
