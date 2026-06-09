@@ -1,32 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { useState } from "react";
 const projects = [
-  {
-    title: "Equb Management System",
-    description:
-      "A system that digitizes traditional Ethiopian savings groups with transparent tracking, contribution monitoring, and automated management.",
-    tech: ["Python", "MySQL"],
-    link: "#",
-  },
+{
+  title: "Equb Management System",
+  description:
+    "A system that digitizes traditional Ethiopian savings groups with transparent tracking and payments.",
+  tech: ["Next.js", "Node.js", "Express.js", "MongoDB"],
+  github: "https://github.com/worknehhaile/EQUB-Updated",
+  screenshots: [
+    "/dashboard.png",
+    "/rounds.png",
+    "/login.png",
+    "/payment.png",
+  ],
+},
   {
     title: "Smart Student ID Verification",
     description:
       "QR-based identity verification system designed to improve student security and reduce manual campus verification processes.",
     tech: ["JavaScript", "QR Code"],
-    link: "#",
+    github: "https://github.com/worknehhaile/Smart-Student-ID-Verification",
+    // demo: "https://smart-student-id-verification.vercel.app",
   },
   {
     title: "Personal Portfolio",
     description:
-      "Modern responsive portfolio showcasing projects, technical skills, backend integration, and professional contact features.",
-    tech: ["React", "Node.js", "MongoDB"],
-    link: "#",
+      "A responsive portfolio built with Next.js showcasing projects and skills.",
+    tech: ["Next.js", "Tailwind CSS"],
+    github: "https://github.com/worknehhaile/Portfolio-v2",
+    demo: "https://portfolio-v2-jet-two-25.vercel.app/",
   },
 ];
 
 export default function Projects() {
+  const [selectedImages, setSelectedImages] = useState(null);
   return (
     <motion.section
       id="projects"
@@ -82,6 +92,7 @@ export default function Projects() {
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-8">
+                  
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
@@ -94,17 +105,84 @@ export default function Projects() {
               </div>
 
               {/* Button */}
-              <a
-                href={project.link}
-                className="inline-block mt-auto border border-gray-700 px-5 py-3 rounded-xl hover:bg-white hover:text-black transition duration-300 text-center"
+             <div className="flex gap-3 mt-auto">
+              {/* GitHub Button */}
+             {/* GitHub Button - Added conditional check */}
+
+             {project.screenshots && (
+              <button
+                onClick={() => setSelectedImages(project.screenshots)}
+                className="flex-1 flex items-center justify-center gap-2 bg-white text-black px-5 py-3 rounded-xl hover:bg-gray-200 transition duration-300"
               >
-                View Project
+                Screenshots
+              </button>
+            )}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 border border-gray-700 px-5 py-3 rounded-xl hover:bg-white hover:text-black transition duration-300"
+              >
+                <FaGithub />
+                GitHub
               </a>
+            )}
+
+              {/* Live Demo Button */}
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 bg-white text-black px-5 py-3 rounded-xl hover:bg-gray-200 transition duration-300"
+                >
+                  <FaExternalLinkAlt />
+                  Demo
+                </a>
+              )}
+            </div>
             </motion.div>
           ))}
         </div>
 
       </div>
+        {/* Image Modal */}
+        {selectedImages && (
+  <div
+    className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6"
+    onClick={() => setSelectedImages(null)}
+  >
+    <div
+      className="bg-gray-900 rounded-3xl max-w-6xl w-full p-6 max-h-[90vh] overflow-y-auto"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="text-2xl font-semibold">
+          Equb Management System Screenshots
+        </h3>
+
+        <button
+          onClick={() => setSelectedImages(null)}
+          className="text-2xl"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-4">
+        {selectedImages.map((image, index) => (
+          <img
+          key={index}
+          src={image}
+          alt={`Screenshot ${index + 1}`}
+          className="w-full h-auto rounded-xl border border-gray-700 object-contain"
+        />
+        ))}
+      </div>
+    </div>
+  </div>
+)}
     </motion.section>
   );
 }
