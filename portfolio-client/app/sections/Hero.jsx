@@ -76,7 +76,7 @@ export default function Hero() {
         >
           <button
             onClick={scrollToProjects}
-            className="px-8 py-4 border border-white rounded-xl hover:bg-white hover:text-black transition duration-300"
+            className="w-[180px] px-8 py-4 border border-white rounded-xl hover:bg-white hover:text-black transition duration-300 text-center"
           >
             View Projects
           </button>
@@ -85,7 +85,7 @@ export default function Hero() {
             href="/workneh-cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 border border-white rounded-xl hover:bg-white hover:text-black transition duration-300"
+            className="w-[180px] px-8 py-4 border border-white rounded-xl hover:bg-white hover:text-black transition duration-300 text-center"
           >
             View CV
           </a>
@@ -93,7 +93,7 @@ export default function Hero() {
           <a
             href="/workneh-cv.pdf"
             download
-            className="px-8 py-4 border border-white rounded-xl hover:bg-white hover:text-black transition duration-300"
+            className="w-[180px] px-8 py-4 border border-white rounded-xl hover:bg-white hover:text-black transition duration-300 text-center"
           >
             Download CV
           </a>
