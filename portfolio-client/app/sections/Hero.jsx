@@ -76,7 +76,7 @@ export default function Hero() {
         >
           <button
             onClick={scrollToProjects}
-            className="px-8 py-4 bg-white text-black rounded-xl hover:scale-105 hover:bg-gray-200 transition duration-300 shadow-lg"
+            className="px-8 py-4 border border-white rounded-xl hover:bg-white hover:text-black transition duration-300"
           >
             View Projects
           </button>
