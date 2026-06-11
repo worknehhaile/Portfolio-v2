@@ -5,8 +5,10 @@ import { useState } from "react";
 
 const skillData = {
   Frontend: ["React", "Next.js", "JavaScript", "Tailwind CSS", "HTML", "CSS"],
-  Backend: ["Node.js", "Express", "MongoDB", "REST API"],
+  Backend: ["Node.js", "Express", "PHP", "Laravel", "REST API"],
+  Databases: ["MySQL", "MongoDB", "PostgreSQL"],
   Tools: ["Git", "GitHub", "Docker", "Postman", "Figma"],
+  
 };
 
 export default function Skills() {
