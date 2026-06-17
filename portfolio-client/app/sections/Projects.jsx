@@ -31,7 +31,7 @@ const projects = [
       "A responsive portfolio built with Next.js showcasing projects and skills.",
     tech: ["Next.js", "Tailwind CSS"],
     github: "https://github.com/worknehhaile/Portfolio-v2",
-    demo: "https://portfolio-v2-jet-two-25.vercel.app/",
+    demo: "https://workneh-portfolio.vercel.app/",
   },
 ];
 
